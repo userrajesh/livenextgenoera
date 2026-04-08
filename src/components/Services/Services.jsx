@@ -6,7 +6,7 @@ import datacenter from '../../assets/datacenter.png'
 function Services() {
   return (
     <section className="services">
-      <h2>What We Do</h2>
+      <h1 className="heading">What We Do</h1>
 
       <div className="cards">
         <div className="card">

@@ -1,75 +1,102 @@
 import { useState, useEffect } from "react";
 import "./Hero.css";
+import Particles from "../Particles/Particles";
 
 function Hero() {
 
 const slides = [
 {
 title: "Innovate The Future",
-text: "NextGenOera builds AI driven digital solutions",
+text: "NextGenOera builds AI-driven digital solutions for modern businesses.",
 button: "Explore Services"
 },
 {
 title: "Smart AI Solutions",
-text: "Transforming business with modern technology",
+text: "Transforming businesses with intelligent automation.",
 button: "Learn More"
 },
 {
 title: "Automation & Data Intelligence",
-text: "Building scalable technology systems",
+text: "Building scalable systems powered by data.",
 button: "Contact Us"
 }
-]
+];
 
-const [index,setIndex] = useState(0)
-const [displayText,setDisplayText] = useState("")
-const [charIndex,setCharIndex] = useState(0)
+const [slideIndex,setSlideIndex] = useState(0);
+const [typedText,setTypedText] = useState("");
+const [charIndex,setCharIndex] = useState(0);
 
-const currentText = slides[index].title
+const currentTitle = slides[slideIndex].title;
 
-/* Typing Effect */
+/* typing animation */
 
 useEffect(()=>{
 
-if(charIndex < currentText.length){
+if(charIndex < currentTitle.length){
 
-const timeout = setTimeout(()=>{
-setDisplayText(prev => prev + currentText.charAt(charIndex))
-setCharIndex(prev => prev + 1)
-},80)
+const typing = setTimeout(()=>{
+setTypedText(prev => prev + currentTitle.charAt(charIndex));
+setCharIndex(prev => prev + 1);
+},70);
 
-return ()=>clearTimeout(timeout)
+return ()=>clearTimeout(typing);
 
 }else{
 
 setTimeout(()=>{
-setDisplayText("")
-setCharIndex(0)
-setIndex((prev)=>(prev+1)%slides.length)
-},2000)
+setTypedText("");
+setCharIndex(0);
+setSlideIndex((prev)=>(prev+1)%slides.length);
+},2000);
 
 }
 
-},[charIndex,currentText,index])
+},[charIndex,currentTitle,slideIndex]);
 
 return(
 
 <section className="hero">
 
+{/* PARTICLES BACKGROUND */}
+
+<div className="particles-wrapper">
+
+<Particles
+particleColors={["#ffffff"]}
+particleCount={200}
+particleSpread={10}
+speed={0.1}
+particleBaseSize={90}
+moveParticlesOnHover
+alphaParticles={false}
+disableRotation={false}
+/>
+
+</div>
+
+{/* HERO CONTENT */}
+
 <div className="hero-content">
 
-<div className="typing">{displayText}</div>
+<h1 className="hero-title">
+{typedText}
+<span className="cursor">|</span>
+</h1>
 
-<p>{slides[index].text}</p>
+<p className="hero-text">
+{slides[slideIndex].text}
+</p>
 
-<button>{slides[index].button}</button>
+<button className="hero-btn">
+{slides[slideIndex].button}
+</button>
 
 </div>
 
 </section>
 
-)
+);
 
 }
 
-export default Hero
+export default Hero;
