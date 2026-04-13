@@ -67,7 +67,7 @@ async function handleSubmit(e) {
   }, 3000);
 }
   return (
-    <section className="contact-section">
+    <section className="contact-section" id="contact">
       <h1>Contact Us</h1>
       <p>
         We appreciate your interest in Nextgenauroa. Please provide the

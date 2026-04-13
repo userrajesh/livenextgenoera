@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Navbar.css";
+import { Link } from "react-router";
 import logo from "../../assets/logo.png";
 
 function Navbar() {
@@ -49,7 +50,7 @@ function Navbar() {
             <a href="#">Resources</a>
           </li>
           <li>
-            <a href="#">Contact</a>
+            <a href="#contact">Contact</a>
           </li>
         </ul>
 
