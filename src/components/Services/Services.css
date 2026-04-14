@@ -145,6 +145,6 @@ padding:8px 16px;
 .btn:hover {
   box-shadow: 0 0 10px rgba(99, 102, 241, 0.7);
   transform: translateX(5px);
-  background-color: rgba(0, 0, 0, 0.719);
-  color: white;
+  background-color:#fff;
+  color: black;
 }
